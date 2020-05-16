@@ -17,6 +17,31 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
-h1, h2, h3 {
+h1, h2, h3,h4,h5 {
   font-family: 'Open Sans', sans-serif;
+}
+
+/*Gradient provided by @_ighosh at uiGradients.com */
+.navbar, .home-callout {
+  /* fallback for old browsers */
+  background: rgb(75,83,32);
+  background: -moz-linear-gradient(90deg, rgba(75,83,32,1) 0%, rgba(75,83,32,1) 44%, rgba(129,138,83,1) 100%);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(90deg, rgba(75,83,32,1) 0%, rgba(75,83,32,1) 44%, rgba(129,138,83,1) 100%);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(90deg, rgba(75,83,32,1) 0%, rgba(75,83,32,1) 44%, rgba(129,138,83,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#4b5320",endColorstr="#818a53",GradientType=1);
+}
+.home-callout {
+  padding-top: 50px;
+  padding-bottom: 100px;
+  color: white;
+}
+.navbar-light .navbar-brand,
+.navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
+  color: white;
+  &:hover {
+    color: white;
+    opacity: 0.75;
+  }
 }
