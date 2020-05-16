@@ -1,12 +1,5 @@
 <!DOCTYPE html>
 <html>
-  <!--<head>-->
-  <!--  <title>Military Battle Club</title>-->
-  <!--  <%= csrf_meta_tags %>-->
-  <!--  <link href="//fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet">-->
-  <!--  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>-->
-  <!--  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>-->
-  <!--</head>-->
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -23,13 +16,19 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a href="/" class="navbar-brand"><i class="fas fa-hiking"></i> MilitaryBattleClub</a>
+      <%= link_to "/", class: "navbar-brand" do %>
+        <i class="fas fa-hiking"></i>
+        MilitaryBattleClub
+      <% end %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-item nav-link active" href="/join">Join<span class="sr-only">(current)</span></a>
+          <%= link_to "/join", class: "nav-item nav-link active" do %>
+            <span class="sr-only">(current)</span>
+            Join
+          <% end %>
         </div>
       </div>
     </nav>
