@@ -16,7 +16,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <%= link_to "/", class: "navbar-brand" do %>
+      <%= link_to root_path, class: "navbar-brand" do %>
         <i class="fas fa-hiking"></i>
         MilitaryBattleClub
       <% end %>
@@ -25,7 +25,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <%= link_to "/join", class: "nav-item nav-link active" do %>
+          <%= link_to join_path, class: "nav-item nav-link active" do %>
             <span class="sr-only">(current)</span>
             Join
           <% end %>

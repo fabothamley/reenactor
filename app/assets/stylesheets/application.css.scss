@@ -50,3 +50,21 @@ h1, h2, h3,h4,h5 {
     opacity: 0.75;
   }
 }
+
+.navbar-toggler-icon {
+  background-color: rgb(105, 117, 39);
+  border: 2px solid white;
+  &:hover, &:focus {
+    background-color: rgb(105, 117, 39);
+  }
+}
+.navbar-light .navbar-toggler {
+  background-color: rgb(105, 117, 39);
+  border: 2px solid white;
+}
+
+// Home Styles
+.navbar-brand {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+}
