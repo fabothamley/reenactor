@@ -6,11 +6,10 @@
   </div>
   <div class="row">
     <div class="col-6 offset-3">
-      
+      <%= flash[:notice] %>
       <div class="card card-header">
-        
         <div class="form-group">
-          <%= form_for "/contacts" do |f| %>
+          <%= form_for @contact do |f| %>
             <div class="form-group">
               <%= f.label :name %>
               <%= f.text_field :name, class: 'form-control' %>
