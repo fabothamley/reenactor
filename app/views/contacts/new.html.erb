@@ -1,13 +1,32 @@
-<h1>Contacts Form</h1>
 <div class = "container">
-  <h3 class="text-center">Contact Us</h3>
-  <%= form_for "/contacts" do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-    <%= f.label :comments %>
-    <%= f.text_area :comments %>
-    <%= f.submit 'Submit' %>
-  <% end %>
+  <div class="row">
+    <div class="col-6 offset-3">
+      <h3 class="text-center">Contact Us</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 offset-3">
+      
+      <div class="card card-header">
+        
+        <div class="form-group">
+          <%= form_for "/contacts" do |f| %>
+            <div class="form-group">
+              <%= f.label :name %>
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :email %>
+              <%= f.text_field :email, class: 'form-control'%>
+            </div>
+            <div class="form-group">
+              <%= f.label :comments %>
+              <%= f.text_area :comments, class: 'form-control' %>
+            </div>
+            <%= f.submit 'Submit',class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
