@@ -36,6 +36,15 @@
         </div>
       </div>
     </nav>
+    <div class="container flash-container">
+      <div class="row">
+        <div class="col-6 offset-3">
+          <% flash.each do |type, msg| %>
+            <%= content_tag :div, msg, class: "alert alert-#{type}" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
     
     <%= yield %>
     
