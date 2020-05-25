@@ -42,6 +42,12 @@ gem 'hirb', '0.7.3'
 # Use Devise for user authentication
 gem 'devise', '4.7.1'
 
+# Use Stripe for payment processing
+gem 'stripe'
+
+# Use Figaro for ENV variables
+gem 'figaro'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
