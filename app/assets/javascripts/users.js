@@ -1,10 +1,15 @@
 /* global $, Stripe */
+//
+// used when join form clicks submit
+// saasapp/app/views/devise/registrations/new.html.erb
+//
 //Document ready.
 $(document).on('turbolinks:load', function(){
   var theForm = $('#join_form');
-  var submitBtn = $('#form-submit-btn');
-  //Set Stripe public key.
+  var submitBtn = $('#form-signup-btn');
+  //Set Stripe public key. extract the meta from the data on the meta of the form
   Stripe.setPublishableKey( $('meta[name="stripe-key"]').attr('content') );
+  Stripe.setPrivateKey( $('meta[name="stripe-api-key"]').attr('content') );
   //When user clicks form submit btn,
   submitBtn.click(function(event){
     //prevent default submission behavior.
