@@ -1,0 +1,79 @@
+<h1>Profiles Form Show</h1>
+<h3> current_user.id </h3>
+<%=  current_user.id %> </br>
+<%= @user.inspect %></br>
+<%= debug(params) %> </br>
+<h2> Once </h2></br>
+<%= puts @once %> </br>
+<div class="col-6 offset-3 text-center">
+  <div class="card card-header">
+    <div class="form-group">
+      <h2> MEMBER CARD </h2>
+    </div>    
+  </div>
+</div>
+<% if user_signed_in? %>
+    <% @user = User.find(current_user.id) %>
+    <% @user.inspect %>
+    <% if !@user.paid? %>
+      <h2>PAYMENT</h2>
+      <% @once = "1"%>
+      <div class="col-6 offset-3 text-center">
+        <div class="card card-header">
+          <div class="form-group">
+            <%= form_tag do %>
+              <h2>TEST</h2>
+            <% end %>
+            <!--From Paypal-->
+            <script src="https://www.paypal.com/sdk/js?client-id=ARCdzUTlaeMd9-uJzLYrU5PfRHfY4YGsmQ8XpRuAIupAefIJ7msaMKuWMQTbNFrplbPy5Uee08SGflqD&currency=GBP"> </script>
+            
+            <div id="paypal-button-container"></div>
+            <!--Paypal buttons-->
+            <script>
+              paypal.Buttons({
+                  style: {
+                      shape: 'pill',
+                      color: 'blue',
+                      layout: 'vertical',
+                      label: 'pay',
+                  },
+               //amount to take 
+                createOrder: function(data, actions) {
+                        return actions.order.create({
+                            purchase_units: [{
+                                amount: {
+                                    value: '40'
+                                }
+                            }],
+                          return_url: "https://www.bbc.co.uk",
+                          cancel_url: "https://www.itv.com"
+                        });
+                    },
+                //message or return page
+                onApprove: function(data, actions) {
+                  // This function captures the funds from the transaction.
+                  return actions.order.capture().then(function(details) {
+                  // This function shows a transaction success message to your buyer.
+                  alert('Transaction completed by ' + details.payer.name.given_name);
+                  actions.redirect('https://www.google.com');
+                        });
+                    },
+                    onCancel: function(data) {
+                      actions.redirect('https://www.bbc.co.uk');
+                    }
+              
+              }).render('#paypal-button-container');
+              // This function displays Smart Payment Buttons on your web page.
+            </script>
+            
+          </div>    
+        </div>
+      </div>
+      <% @user.paid = true %>
+      <% @once = "0" %>
+      <% @user.save %>
+    <% else %>
+      <% @once = "1" %>
+      <% @user.paid = false %>
+    <% end %>
+  <% end %>

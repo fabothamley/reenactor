@@ -1,0 +1,168 @@
+<div class = "container home-padding">
+  <!--<div class="row">-->
+  <!--  <div class="col-6 offset-3">-->
+  <!--    <h3 class="text-center">Sign up</h3>-->
+  <!--  </div>-->
+  <!--</div>-->
+  <div class="container text-center">
+    <h1>How to Join</h1>
+    <p>We are Military Battle Club. Our group focuses on creating a community of like minded people 
+    who are interested in military reenacting. Our group members take part in their chosen type of 
+    reenacting up and down the country every weekend. </p>
+    <p>The reason for joining the group is that
+    individuals, to be able to purchase replica guns for their chosen reenactment need to meet the
+    Governments requirements for being able to buy a replica. This group facilitates this legal 
+    requirement.</p>
+    <p>We provide no activities or service other than meeting the requirement to be a 
+    Historical Reenactment Society with 3rd party public liability insurance. 
+    Should you require any form of insurance for your chosen weekend activity then it is your 
+    responsibility to take out that insurance yourself.</p>
+    <p>Once you have taken out this membership 
+    which is £40 for a year you will be eligible to buy replica guns from most
+    retailers in the UK.</p>
+  </div>
+  <div class="row">
+    <div class="col-6 offset-3">
+      <div class="card card-header">
+        <div class="form-group">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name),html: {id: 'join_form'}) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+          
+            <div class="field form-group">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+            </div>
+          
+            <div class="field form-group">
+              <%= f.label :password %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+            </div>
+          
+            <div class="field form-group">
+              <%= f.label :password_confirmation %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+            </div>
+            
+            <div class="field form-group">
+              <%= f.label :first_name %><br />
+              <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: 'form-control' %>
+            </div>
+          
+            <div class="field form-group">
+              <%= f.label :last_name %><br />
+              <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: 'form-control' %>
+            </div>
+          
+            <div class="field form-group">
+              <%= f.label :address_line_1 %><br />
+              <%= f.text_field :address_line_1, autofocus: true, autocomplete: "address_line_1", class: 'form-control' %>
+            </div>
+          
+            <div class="field form-group">
+              <%= f.label :address_line_2 %><br />
+              <%= f.text_field :address_line_2, autofocus: true, autocomplete: "address_line_2", class: 'form-control' %>
+            </div>
+          
+            <div class="field form-group">
+              <%= f.label :address_line_3 %><br />
+              <%= f.text_field :address_line_3, autofocus: true, autocomplete: "address_line_3", class: 'form-control' %>
+            </div>
+          
+            <div class="field form-group">
+              <%= f.label :address_town %><br />
+              <%= f.text_field :address_town, autofocus: true, autocomplete: "address_town", class: 'form-control' %>
+            </div>
+          
+            <div class="field form-group">
+              <%= f.label :address_county %><br />
+              <%= f.text_field :address_county, autofocus: true, autocomplete: "address_county", class: 'form-control' %>
+            </div>
+          
+            <div class="field form-group">
+              <%= f.label :address_postcode %><br />
+              <%= f.text_field :address_postcode, autofocus: true, autocomplete: "address_postcode", class: 'form-control' %>
+            </div>
+          
+            <div class="field form-group">
+              <%= f.label :age %><br />
+              <%= f.number_field(:age, in: 18..100, step: 1) %>
+            </div>
+            <div id="paypal-button-container"></div>
+<script src="https://www.paypal.com/sdk/js?client-id=sb&currency=GBP" data-sdk-integration-source="button-factory"></script>
+<script>
+  //$(document).load(function() {
+  //$("#join_form").submit(function (e) {
+  //e.preventDefault();
+  //$("#submitBtn").attr("disabled", true);
+  //$("#submitBtn").val("Click Paypal");
+  //return true;
+  //})
+  //});  
+ var paid_status = "Not Paid";
+  paypal.Buttons({
+      style: {
+          shape: 'pill',
+          color: 'blue',
+          layout: 'vertical',
+          label: 'pay',
+          
+      },
+      createOrder: function(data, actions) {
+          return actions.order.create({
+              purchase_units: [{
+                  amount: {
+                      value: '40'
+                  }
+              }]
+          });
+      },
+      onApprove: function(data, actions) {
+          return actions.order.capture().then(function(details) {
+              alert('Transaction completed by ' + details.payer.name.given_name + '!');
+              paid_status = "paid";
+              document.getElementById("mytext").value = paid_status;
+              
+              //Submit Button control
+              //submitBtn.click(function(event){
+              //prevent default submission behavior.
+              //event.preventDefault();
+              //submitBtn.prop('disabled', false).val("Sign Up");
+              $(document).ready(function(){
+                $("#join_form").submit(); // Submit the form
+              });
+              
+          });
+      }
+  }).render('#paypal-button-container');
+
+</script>
+            <input type="text" id="mytext" onkeyup="manage(this)" >
+
+            <div class="field form-group">
+              <%= label_tag :card_number, "Credit Card Number" %>
+              <%= text_field_tag :card_number, nil, name: nil, class: "form-control" %>
+            </div>
+            <div class="field form-group">
+              <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+              <%= text_field_tag :card_code, nil, name: nil, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= label_tag :card_month, "Card Expiration" %>
+              <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month" } %>
+              <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year" } %>
+            </div>
+            
+            <div class="actions  form-group">
+                <%= f.submit "Submit details when paid", disabled: true ,class: 'btn btn-primary', id: 'submitBtn' %>
+            </div>
+
+            <%= render "devise/shared/links" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

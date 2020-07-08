@@ -12,9 +12,10 @@
 //
 // require jquery - removed and replaced with jquery3
 // require bootstrap can be used to replace bootstrap-sprockets for speed
-//= require jquery_ujs
-//= require turbolinks
-//= require_tree .
-//= require jquery3
-//= require popper
+// require turbolinks removed 2020 06 12
 //= require bootstrap-sprockets
+//= require jquery3
+//= require jquery_ujs
+//= require_tree .
+//= require popper
+

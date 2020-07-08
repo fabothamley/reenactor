@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Military Battle Club</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!--From Paypal-->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- Optimal Internet Explorer compatibility -->
   
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   
+    <title>Military Battle Club</title>
     <%= csrf_meta_tags %>
     <link href="//fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag "//code.jquery.com/jquery-1.11.1.min.js", type: 'text/javascript' %>
+    <%= javascript_include_tag "https://js.stripe.com/v3/", type: 'text/javascript' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--not needed <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>-->
     <%= tag :meta, :name => "stripe-api-key", :content => Stripe.api_key %>
-  
   </head>
   <body>
-  
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <%= link_to root_path(place: "home"), class: "navbar-brand" do %>
+      <%= link_to root_path, class: "navbar-brand" do %>
         <i class="fas fa-hiking"></i>
         MilitaryBattleClub
       <% end %>

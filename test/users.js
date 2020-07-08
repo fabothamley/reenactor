@@ -6,7 +6,7 @@
 //Document ready.
 $(document).on('turbolinks:load', function(){
   var theForm = $('#join_form');
-  var submitBtn = $('#form-signup-btn');
+  var submitBtn = $('#form-submit-btn');
   //Set Stripe public key. extract the meta from the data on the meta of the form
   Stripe.setPublishableKey( $('meta[name="stripe-key"]').attr('content') );
   Stripe.setPrivateKey( $('meta[name="stripe-api-key"]').attr('content') );
@@ -56,7 +56,8 @@ $(document).on('turbolinks:load', function(){
     //Get the token from the response.
     var token = response.id;
     //Inject the card token in a hidden field.
-    theForm.append( $('<input type="hidden" name="user[stripe_card_token]">').val(token) );
+    // var mstart_date = Date.now()
+    //theForm.append( $('<input type="hidden" name="user[stripe_card_token]">').val(token) );
     //Submit form to our Rails app.
     theForm.get(0).submit();
   }

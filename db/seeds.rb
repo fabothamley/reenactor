@@ -5,11 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-users= users.create!({
+users = User.create!({
   email: "testadmin@example.com",
   encrypted_password: "123456" ,
+  password: "123456" ,
   admin: true
 })
+
+#u = User.new({{email: "1234@localhost", encrypted_password: "..."})
+
+
 #    t.string   "email",                  default: "", null: false
 #    t.string   "encrypted_password",     default: "", null: false
 #    t.string   "reset_password_token"

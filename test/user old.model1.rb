@@ -7,28 +7,20 @@ class User < ApplicationRecord
   #white listed the variable stripe_card_token that comes in from teh form
   attr_accessor :stripe_card_token
   
-  validates :first_name, presence: true
-  validates :first_name, length: { minimum: 2 }
-  
-  validates :last_name, presence: true
-  validates :last_name, length: { minimum: 2 }
-  
-  validates :age, presence: true
-  validates :age, numericality: { only_integer: true }
-  validates_inclusion_of :age, :in => 18..99
-  
-  validates :address_line_1, presence: true
-  
-  validates :address_postcode, presence: true
-  validates :address_postcode, length: { minimum: 5 }
-  
-  
-  # save_with_subscription called from
-  # /saasapp/app/controllers/users/registrations_controller.rb
-  
   def save_with_subscription
     if valid?
-      self.stripe_customer_token = Date.today
+      # this line of code charges the card using the customer token
+      require 'stripe'
+      # `source` is obtained with Stripe.js; see https://stripe.com/docs/api/charges/create?lang=ruby
+      customer = Stripe::Charge.create({
+        amount: 4000,
+        currency: 'gbp',
+        source: 'tok_amex',
+        description: 'My First Test Charge (created for API docs)',
+      })
+      
+      # customer = Stripe::Customer.create(description: email, plan: plan_id, card: stripe_card_token)
+      self.stripe_customer_token = customer.id
       self.member_start_date =  Date.today
       self.member_expiry_date =  Date.today + 365
       save!

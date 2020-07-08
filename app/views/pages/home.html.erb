@@ -1,5 +1,18 @@
 <div class="home-callout text-center container-fluid">
   <h2>Welcome to Military Battle Club</h2>
+  <% @locat = params[:place] %>
+  
+  
+<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="R384TXU9BPHYJ">
+<input type="image" src="https://www.sandbox.paypal.com/en_US/GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.sandbox.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+</form>
+  
+  
+  
+  
   <h5>Our goal is to support your hobby. 
   For a few years people who want to buy and use replica guns for Airsoft or reenacting or 
   target shooting have struggled because they do not meet the legal requirements to be able to buy one.
